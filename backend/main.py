@@ -44,6 +44,7 @@ dbExample = [
 @app.route('/')
 def index():
     return 'Hello World!'
+    
 
 
 @app.route('/getData', methods=['GET'])
@@ -56,5 +57,8 @@ def postData():
     data = request.get_json()
     return data, 200
 
+@app.route('/logevent')
+def logcreate():
+    return render_template("logevent.html")
 
 app.run(port=8000)
