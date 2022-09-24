@@ -1,6 +1,17 @@
 from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
+class Donor(db.Model):
+    __tablename__ = 'Donor'
+    donorId = db.Column('id', db.Integer, primary_key=True)
+    dname = db.Column('donor_name', db.String(100))
+    
 
 dbExample = [
     {
