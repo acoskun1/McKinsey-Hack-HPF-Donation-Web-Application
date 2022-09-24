@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+
+	<body>
+		<div class="invoice-box">
+			<table>
+				<tr class="top">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="/home/damian/hackathon22mck//images/logo.png" alt="Company logo" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice #: 123<br />
+									Created: September 24, 17:42
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="2">
+						<table>
+							<tr>
+								<td>
+									Human Practice Foundation<br />
+									Brolæggerstræde 2, <br />
+									1211 København K, Danmark
+								</td>
+
+								<td>
+									{{ json_data.donorname }}<br />
+									{{ json_data.email }}
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Payment Method</td>
+					<td>Card#</td>
+				</tr>
+
+				<tr class="details">
+					<td>Credit Card</td>
+					<td>{{ json_data.creditcard}}</td>
+				
+				</tr>
+
+				<tr class="heading">
+					<td>Cause</td>
+
+					<td>Ammount</td>
+				</tr>
+
+				<tr class="item">
+					<td>{{ json_data.project }}-{{ json_data.task }}</td>
+
+					<td>{{ json_data.currency }}{{ json_data.ammount}}</td>
+				</tr>
+				
+				<tr class="total">
+					<td></td>
+
+					<td>Total: {{ json_data.currency }}{{ json_data.ammount}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<div class="footer">
+	  <div class="footer-info">
+	    <span>lf@humanpractice.org</span> |
+	    <span>+45 93 93 27 74 </span> |
+	    <span>humanpractice.org</span>
+	  </div>
+	  <div class="footer-thanks">
+	    <img src="https://github.com/anvilco/html-pdf-invoice-template/raw/main/img/heart.png" alt="heart">
+	    <span>Thank you!</span>
+	  </div>
+</div>
+</html>
