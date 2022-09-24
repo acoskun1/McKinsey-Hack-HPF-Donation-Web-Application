@@ -1,6 +1,7 @@
 from weasyprint import HTML, CSS
 import os
 import jinja2
+from datetime import datetime
 
 class PDFCreator:
     templateName = "index.html"
@@ -20,6 +21,7 @@ class PDFCreator:
                 "creditcard":"123143243242"
             }
         }
+        response["data"]["date"]=datetime.now().strftime("%m %B, %H:%M")
         html_text = template.render(json_data=response["data"])
         html = HTML(string=html_text, base_url="")
         return html.write_pdf(stylesheets=[CSS(self.cssfile)])
