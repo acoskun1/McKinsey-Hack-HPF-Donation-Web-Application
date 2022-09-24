@@ -50,6 +50,7 @@ class Task(db.Model):
     totalPaid = db.Column('paid', db.Integer)
     #Project ID -> foreign key (1-M)
     project_id = db.Column(db.Integer, db.ForeignKey('project.projectId'))
+    #hello
 
 
 dbExample = [
