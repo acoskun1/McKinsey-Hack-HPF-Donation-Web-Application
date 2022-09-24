@@ -9,7 +9,8 @@ In ./frontend
 1. Install npm packages
    `npm i`
 2. Run npm
-   `npm start`
+   `npm run dev`
+3. Open 'http://localhost:3000' in browser
 
 ## Backend
 
