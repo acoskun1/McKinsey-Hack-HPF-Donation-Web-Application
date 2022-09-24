@@ -17,9 +17,9 @@ class Donor(db.Model):
 
 class Project(db.Model):
     __tablename__ = 'Project'
-    projectId = db.Column('id',db.integer, primary_key=True)
-    projectName = db.Column('project_name', db.string(100))
-    
+    projectId = db.Column('id',db.Integer, primary_key=True)
+    projectName = db.Column('project_name', db.String(100))
+    projectLocation = db.Column('project_location', db.String(100))
 
 
 dbExample = [
