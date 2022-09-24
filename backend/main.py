@@ -15,6 +15,13 @@ class Donor(db.Model):
     email = db.Column('email', db.String(100))
 
 
+class Project(db.Model):
+    __tablename__ = 'Project'
+    projectId = db.Column('id',db.integer, primary_key=True)
+    projectName = db.Column('project_name', db.string(100))
+    
+
+
 dbExample = [
     {
         'charityId': 1,
