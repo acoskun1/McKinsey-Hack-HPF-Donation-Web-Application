@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
-
-app = Flask(__name__)
+from flask import Flask, jsonify, request, render_template
+import os
+workdir = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, template_folder="templates")
 
 dbExample = [
     {
@@ -14,6 +15,7 @@ dbExample = [
 @app.route('/')
 def index():
     return 'Hello World!'
+    
 
 
 @app.route('/getData', methods=['GET'])
@@ -26,5 +28,8 @@ def postData():
     data = request.get_json()
     return data, 200
 
+@app.route('/logevent')
+def logcreate():
+    return render_template("logevent.html")
 
 app.run(port=8000)
