@@ -8,11 +8,21 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class Donor(db.Model):
-    __tablename__ = 'Donor'
+    __tablename__ = 'donor'
     donorId = db.Column('id', db.Integer, primary_key=True)
     fname = db.Column('first_name', db.String(100))
     lname = db.Column('last_name', db.String(100))
     email = db.Column('email', db.String(100))
+
+class Donation(db.Model):
+    __tablename__ = 'donation'
+    #Transaction ID -> primary key
+    trId = db.Column('transaction_id', db.Integer, primary_key=True)
+    #Donor ID -> foreign key
+    donor_id = db.Column(db.Integer, db.ForeignKey('donation.donorId'))
+    amount = db.Column('', db.Numeric)
+    currency = db.Column('currency', db.String(3))
+
 
 
 dbExample = [
