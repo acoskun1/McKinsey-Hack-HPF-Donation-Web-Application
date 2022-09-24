@@ -18,6 +18,7 @@ import { useState, useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/20/solid'
 import Head from 'next/head'
+import axios from 'axios'
 import { useRouter } from 'next/router'
 
 const availablePlaygrounds = [
@@ -245,6 +246,11 @@ const Checkout = (props) => {
             cart
         }
         // TODO: Give to API
+        axios.post('http://127.0.0.1:8000/postData', data)
+          .then(function (response) {
+            console.log(response);
+          })
+
         setCart([])
         localStorage.setItem('cart', JSON.stringify([]))
         router.push("/checkout/transaction");
