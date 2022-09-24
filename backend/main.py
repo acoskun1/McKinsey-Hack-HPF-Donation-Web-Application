@@ -10,8 +10,10 @@ db = SQLAlchemy(app)
 class Donor(db.Model):
     __tablename__ = 'Donor'
     donorId = db.Column('id', db.Integer, primary_key=True)
-    dname = db.Column('donor_name', db.String(100))
-    
+    fname = db.Column('first_name', db.String(100))
+    lname = db.Column('last_name', db.String(100))
+    email = db.Column('email', db.String(100))
+
 
 dbExample = [
     {
