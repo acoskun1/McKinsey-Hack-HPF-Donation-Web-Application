@@ -1,4 +1,7 @@
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, migrate
 import os
 workdir = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__, template_folder="templates", static_folder="statics")
@@ -77,7 +80,7 @@ class Task(db.Model):
 
 @app.route('/')
 def index():
-    return 'Hello World!'
+    return render_template()
 
 
 @app.route('/getData', methods=['GET'])
@@ -106,7 +109,7 @@ def postData():
     proj = Project(project_title, project_event, project_location)
     tn = Task(task)
     dnt = Donation(amount, currency)
-    db.session.add_all([donot, proj, tn, dnt])
+    db.session.add_all([donor, proj, tn, dnt])
     db.session.commit()
     # DO SOMETHING HERE
     return data
