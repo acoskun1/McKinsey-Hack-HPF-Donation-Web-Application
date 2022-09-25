@@ -59,6 +59,7 @@ class Task(db.Model):
     # Project ID -> foreign key (1-M)
     project_id = db.Column(db.Integer, db.ForeignKey('project.project_id'))
 
+
 @app.route('/')
 def index():
     return 'Hello World!'
@@ -71,7 +72,7 @@ def getData():
 
 @app.route('/postData', methods=['POST'])
 def postData():
-    data = request.get_json()
+    data = request.json()
     print(data)
     # DO SOMETHING HERE
     return data, 200
