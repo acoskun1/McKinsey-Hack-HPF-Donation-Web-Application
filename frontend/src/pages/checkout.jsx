@@ -22,23 +22,46 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 
 const availablePlaygrounds = [
-  {
-    id: 1,
-    title: 'Toilets',
-    href: '#',
-    desc: 'Some random ass descriptions',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    projectTitle: ""
-  },
-  {
-    id: 2,
-    title: 'Roof',
-    href: '#',
-    desc: 'Some random ass descriptions',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-  },
+    {
+        "id": "1b09c89c-8cdb-4a94-ab9e-ecaa9903d2f8",
+        "title": "IT Equipment",
+        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "amount": 3000,
+        "target": 8000,
+        "imgSrc": "https://media.istockphoto.com/photos/african-children-using-a-laptop-inside-classroom-kenya-picture-id610137520?k=20&m=610137520&s=612x612&w=0&h=UjLF6BAfY7qktWhJvApZkIUyh0-5rfb-gLtVVCQilkA="
+    },
+    {
+        "id": "d5216217-d370-4410-aca7-e07607e2d483",
+        "title": "Building Playgrounds",
+        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "amount": 8000,
+        "target": 9000,
+        "imgSrc": "https://media.istockphoto.com/photos/african-children-soccer-feet-at-sunset-picture-id824273054?k=20&m=824273054&s=612x612&w=0&h=vaM4l5u0b0JoA6XMGnvy9sj0L_cy5Wl2sFJ70JdIynY="
+    },
+    {
+        "id": "3fdd1243-bfcb-4cc8-99e0-6caf48445ca5",
+        "title": "Toilet Reparation",
+        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "amount": 2000,
+        "target": 3000,
+        "imgSrc": "https://media.istockphoto.com/photos/latrine-in-the-savannah-masai-mara-kenya-picture-id1309376236?k=20&m=1309376236&s=612x612&w=0&h=qdtt7KGyhCPxa5oYJ8LM3iNuuH4Igna8wfsZW9uITZ4="
+    },
+    {
+        "id": "265ef33e-7514-4396-be3c-1ba8b99f557f",
+        "title": "Class Equipments",
+        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "amount": 2000,
+        "target": 2000,
+        "imgSrc": "https://media.istockphoto.com/photos/empty-classroom-picture-id1340516763?k=20&m=1340516763&s=612x612&w=0&h=22l9AkZsQUpraGocsAKcTPJLVGie4EIKbgXGuHgFfo8="
+    },
+    {
+        "id": "b6348678-5a89-453c-89fe-37e2bcd234c4",
+        "title": "Roof Maintenances",
+        "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+        "amount": 4500,
+        "target": 4500,
+        "imgSrc": "https://images.unsplash.com/photo-1611843513285-53451152bc9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJvb2YlMjBicm9rZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+    }
   // More products...
 ]
 
@@ -605,9 +628,8 @@ const Checkout = (props) => {
                         {cart.map((playground) => (
                         <li key={playground.id} className="flex py-6 px-4 sm:px-6">
                              <div className="flex-shrink-0">
-                            <img src={playground.imageSrc} alt={playground.imageAlt} className="w-20 rounded-md" />
+                            <img src={playground.imgSrc} alt={playground.imageAlt} className="w-20 rounded-md" />
                             </div>
-
                             <div className="ml-6 flex flex-1 flex-col">
                             <div className="flex">
                                 <div className="min-w-0 flex-1">

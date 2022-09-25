@@ -12,46 +12,50 @@ import playground1Img from '@/images/playground1.jpeg'
 
 const availablePlaygrounds = [
   {
-    id: 1,
-    title: 'IT Equipments',
-    href: '#',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    currentDonation: 5000,
-    targetDonation: 8000
+      "id": "1b09c89c-8cdb-4a94-ab9e-ecaa9903d2f8",
+      "title": "IT Equipment",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "amount": 3000,
+      "target": 8000,
+      "imgSrc": "https://media.istockphoto.com/photos/african-children-using-a-laptop-inside-classroom-kenya-picture-id610137520?k=20&m=610137520&s=612x612&w=0&h=UjLF6BAfY7qktWhJvApZkIUyh0-5rfb-gLtVVCQilkA=",
+      "percentage": "40%",
   },
   {
-    id: 2,
-    title: 'Toilets Reparation',
-    href: '#',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    currentDonation: 5000,
-    targetDonation: 8000
+      "id": "d5216217-d370-4410-aca7-e07607e2d483",
+      "title": "Building Playgrounds",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "amount": 6000,
+      "target": 9000,
+      "imgSrc": "https://media.istockphoto.com/photos/african-children-soccer-feet-at-sunset-picture-id824273054?k=20&m=824273054&s=612x612&w=0&h=vaM4l5u0b0JoA6XMGnvy9sj0L_cy5Wl2sFJ70JdIynY=",
+      "percentage": "60%",
   },
   {
-    id: 3,
-    title: 'IT Equipments',
-    href: '#',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    currentDonation: 5000,
-    targetDonation: 8000
+      "id": "3fdd1243-bfcb-4cc8-99e0-6caf48445ca5",
+      "title": "Toilet Reparation",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "amount": 2000,
+      "target": 3000,
+      "imgSrc": "https://media.istockphoto.com/photos/latrine-in-the-savannah-masai-mara-kenya-picture-id1309376236?k=20&m=1309376236&s=612x612&w=0&h=qdtt7KGyhCPxa5oYJ8LM3iNuuH4Igna8wfsZW9uITZ4=",
+      "percentage": "70%",
   },
   {
-    id: 4,
-    title: 'Toilets Reparation',
-    href: '#',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    currentDonation: 5000,
-    targetDonation: 8000
+      "id": "265ef33e-7514-4396-be3c-1ba8b99f557f",
+      "title": "Class Equipments",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "amount": 2000,
+      "target": 2000,
+      "imgSrc": "https://media.istockphoto.com/photos/empty-classroom-picture-id1340516763?k=20&m=1340516763&s=612x612&w=0&h=22l9AkZsQUpraGocsAKcTPJLVGie4EIKbgXGuHgFfo8=",
+      "percentage": "100%",
   },
-  // More products...
+  {
+      "id": "b6348678-5a89-453c-89fe-37e2bcd234c4",
+      "title": "Roof Maintenances",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "amount": 4500,
+      "target": 4500,
+      "imgSrc": "https://images.unsplash.com/photo-1611843513285-53451152bc9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJvb2YlMjBicm9rZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+  }
+// More products...
 ]
 
 function PlaygroundEntry({ playground }) {
@@ -106,9 +110,9 @@ function PlaygroundEntry({ playground }) {
             className="relative mr-auto block w-44 overflow-hidden  bg-slate-200 shadow-xl shadow-slate-200 sm:w-36 lg:w-72  rounded-md mt-3 lg:mt-0"
             aria-label="Homepage"
           >
-            <Image
+            <img
               // className="w-full"
-              src={playground1Img}
+              src={playground.imgSrc}
               alt=""
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
               priority
@@ -133,10 +137,10 @@ function PlaygroundEntry({ playground }) {
 
           </div>
           <div class="w-full bg-gray-200 rounded-full h-1.5 mt-4 dark:bg-gray-700">
-            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500" style={{width: '45%'}}></div>
+            <div class="bg-blue-600 h-1.5 rounded-full dark:bg-blue-500" style={{width: playground.percentage}}></div>
           </div>
           <p className="mt-1 text-sm leading-7 text-slate-700">
-            <span className="font-extrabold text-lg">£{playground.currentDonation}</span> is raised from <span className="font-bold">£{playground.targetDonation} </span> Goals
+            <span className="font-extrabold text-lg">£{playground.amount}</span> is raised from <span className="font-bold">£{playground.target} </span> Goals
           </p>
           <div className="mt-4 flex items-center gap-4">
             <Link
