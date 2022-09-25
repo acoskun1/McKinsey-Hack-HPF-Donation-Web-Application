@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # Association table -> (M-M) Project & Donation
-donation_project = db.Table('donation_project', db.Column('donation_id', db.Integer, db.ForeignKey('donation.donation_id')), db.Column('prId', db.Integer, db.ForeignKey('project.project_id')))
+donation_project = db.Table('donation_project', db.Column('donation_id', db.Integer, db.ForeignKey('donation.donation_id')), db.Column('project_id', db.Integer, db.ForeignKey('project.project_id')))
 
 
 class Donor(db.Model):
@@ -22,9 +22,9 @@ class Donor(db.Model):
     donor_id = db.Column('donor_id', db.Integer, primary_key=True)
     first_name = db.Column('first_name', db.String(255), nullable=False)
     last_name = db.Column('last_name', db.String(255), nullable=False)
-    email = db.Column('email', db.String(255), nullable=False, unique=True)
+    email = db.Column('email', db.String(255), nullable=False)
     # backref relationship -> Donation
-    donations = db.relationship('Donor', backref='donor')
+    donations = db.relationship('Donation',backref='donor')
 
     def __init__(self, first_name, last_name, email):
         self.email = email
@@ -75,8 +75,6 @@ class Task(db.Model):
 
     def __init__(self, task_name):
         self.task_name = task_name
-        self.cost = cost
-        self.total_paid = total_paid
 
 @app.route('/')
 def index():
@@ -96,12 +94,21 @@ def postData():
     first_name = data['firstName']
     last_name = data['lastName']
     currency = data['currency']
-    amount = data['cart'][0]['amount']
+    task = data['cart'][0]['title']
+    amount = 0
+    for item in data['cart']:
+        amount += int(item['amount'])
+    project_title = data['projectTitle']
+    project_location = data['projectLocation']
+    project_event = data['projectEvent']
 
-    dnt = Donation(amount, currency)
+    
     donor = Donor(first_name, last_name, email)
-
-    print(data)
+    proj = Project(project_title, project_event, project_location)
+    tn = Task(task)
+    dnt = Donation(amount, currency)
+    db.session.add_all([donot, proj, tn, dnt])
+    db.session.commit()
     # DO SOMETHING HERE
     return data
 
