@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-#Association table -> (M-M) Project & Donation
+# Association table -> (M-M) Project & Donation
 donation_project = db.Table('donation_project', db.Column('dnId', db.Integer, db.ForeignKey('donation.dnId')), db.Column('prId', db.Integer, db.ForeignKey('project.projectId')))
 
 
@@ -22,20 +22,21 @@ class Donor(db.Model):
     fname = db.Column('first_name', db.String(255), nullable=False)
     lname = db.Column('last_name', db.String(255), nullable=False)
     email = db.Column('email', db.String(255), nullable=False, unique=True)
-    #backref relationship -> Donation
+    # backref relationship -> Donation
     donations = db.relationship('Donor', backref='donor')
 
 
 class Donation(db.Model):
     __tablename__ = 'donation'
-    #Transaction ID -> primary key
+    # Transaction ID -> primary key
     dnId = db.Column('donation_id', db.Integer, primary_key=True)
-    #Donor ID -> foreign key (1-M)
+    # Donor ID -> foreign key (1-M)
     donor_id = db.Column(db.Integer, db.ForeignKey('donor.donorId'))
     amount = db.Column('amount', db.Integer, nullable=False)
     currency = db.Column('currency', db.String(3), nullable=False)
     # backref relationship -> Project
     projects = db.relationship('Project', secondary=donation_project, backref='project')
+
 
 class Project(db.Model):
     __tablename__ = 'project'
@@ -56,6 +57,8 @@ class Task(db.Model):
     totalPaid = db.Column('paid', db.Integer)
     # Project ID -> foreign key (1-M)
     project_id = db.Column(db.Integer, db.ForeignKey('project.projectId'))
+    # hello
+
 
 dbExample = [
     {
