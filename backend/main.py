@@ -11,6 +11,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+#hello hello
+
 # Association table -> (M-M) Project & Donation
 donation_project = db.Table('donation_project', db.Column('dnId', db.Integer, db.ForeignKey('donation.dnId')), db.Column('prId', db.Integer, db.ForeignKey('project.projectId')))
 
