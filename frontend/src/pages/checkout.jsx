@@ -347,6 +347,10 @@ const Checkout = (props) => {
      //this is called on component mount
         useEffect(() => {
             let localCart = typeof window !== 'undefined' ? localStorage.getItem('cart') : null
+
+            if (!localCart){
+                return
+            }
             //turn it into js
             localCart = JSON.parse(localCart);
             //load persisted cart into state if it exists
