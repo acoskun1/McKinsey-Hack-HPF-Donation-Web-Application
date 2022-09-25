@@ -1,8 +1,7 @@
-#!/usr/bin/env python3
-from flask import Flask, jsonify, request, redirect
-from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate, migrate
+from flask import Flask, jsonify, request, render_template
+import os
+workdir = os.path.dirname(os.path.abspath(__file__))
+app = Flask(__name__, template_folder="templates", static_folder="statics")
 
 app = Flask(__name__)
 CORS(app)
