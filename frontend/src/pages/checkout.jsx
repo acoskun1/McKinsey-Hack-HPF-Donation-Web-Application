@@ -284,7 +284,7 @@ const Checkout = (props) => {
             .catch(err => console.log(err))
         setCart([])
         localStorage.setItem('cart', JSON.stringify([]))
-        router.push("/checkout/transaction");
+        router.push("/checkout/transaction#article");
         // props.history.push('/checkout/transaction')
         // navigate('/checkout/transaction');
 
@@ -412,7 +412,7 @@ const Checkout = (props) => {
     <Head>
       <title>{`Title - Their Side`}</title>
     </Head>
-    <article className="py-16 lg:py-36">
+    <article className="py-16 lg:py-36" id="article">
     {/* <div className="lg:max-w-4xl">
         <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4 lg:px-0">
           {children} */}
