@@ -7,6 +7,10 @@ import { AudioPlayer } from '@/components/player/AudioPlayer'
 import posterImage from '@/images/School_Project_Kenya.jpeg'
 import { useRouter } from 'next/router'
 
+const projectTitle = 'Fundrising for School Building'
+const projectLocation = 'Kenya'
+const projectEvent = 'Golfing'
+
 function randomBetween(min, max, seed = 1) {
 
   return () => {
@@ -200,7 +204,7 @@ export function Layout({ children }) {
 
             <div className="text-xl font-bold text-slate-900">
               <div className="flex justify-center lg:justify-start">
-                <span href="/">Fundrising for School Building</span>
+                <span href="/">{projectTitle}</span>
               </div>
             </div>
 
@@ -210,7 +214,7 @@ export function Layout({ children }) {
                 <LocationIcon/>
                 <p className="ml-1 text-md font-medium leading-8 text-slate-700 ">
                 {/* A new building, 10 classrooms 287 students impacted */}
-                Kenya
+                {projectLocation}
                 </p>
               </div>
               
@@ -218,7 +222,7 @@ export function Layout({ children }) {
                 <EventIcon/>
                 <p className="ml-1 text-md font-medium leading-8 text-slate-700 ">
                 {/* A new building, 10 classrooms 287 students impacted */}
-                Golfing
+                {projectEvent}
                 </p>
               </div>
             </div>

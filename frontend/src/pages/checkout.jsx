@@ -29,6 +29,7 @@ const availablePlaygrounds = [
     desc: 'Some random ass descriptions',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
+    projectTitle: ""
   },
   {
     id: 2,
@@ -40,6 +41,10 @@ const availablePlaygrounds = [
   },
   // More products...
 ]
+
+const projectTitle = 'Fundrising for School Building'
+const projectLocation = 'Kenya'
+const projectEvent = 'Golfing'
 
 const paymentMethods = [
   { id: 'credit-card', title: 'Credit card' },
@@ -237,6 +242,9 @@ const Checkout = (props) => {
     const handleSubmit = e => {  
         e.preventDefault();
         const data = {
+            projectTitle,
+            projectLocation,
+            projectEvent,
             email,
             firstName,
             lastName,
@@ -245,8 +253,11 @@ const Checkout = (props) => {
             currency,
             cart
         }
+        console.log(data)
         // TODO: Give to API
-        axios.post('http://127.0.0.1:8000/postData', data).then(res => console.log(res))
+        axios.post('http://127.0.0.1:8000/postData', data)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         setCart([])
         localStorage.setItem('cart', JSON.stringify([]))
         router.push("/checkout/transaction");
@@ -349,11 +360,15 @@ const Checkout = (props) => {
             let localCart = typeof window !== 'undefined' ? localStorage.getItem('cart') : null
             //turn it into js
             localCart = JSON.parse(localCart);
+            if (!localCart){
+                localCart = []
+            }
             //load persisted cart into state if it exists
             console.log(localCart)
             if (localCart) setCart(localCart)
 
             let totalVal=0
+            console.log(localCart)
             for (var i = 0; i < localCart.length; i++) {
                 totalVal += parseInt(localCart[i].amount)
             }
