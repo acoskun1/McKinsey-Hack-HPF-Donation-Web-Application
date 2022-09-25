@@ -103,7 +103,7 @@ function PlaygroundEntry({ playground }) {
           </div>
            <Link
             href="/"
-            className="relative mx-auto block w-44 overflow-hidden  bg-slate-200 shadow-xl shadow-slate-200 sm:w-36 lg:w-72  rounded-md mr-5"
+            className="relative mr-auto block w-44 overflow-hidden  bg-slate-200 shadow-xl shadow-slate-200 sm:w-36 lg:w-72  rounded-md mt-3 lg:mt-0"
             aria-label="Homepage"
           >
             <Image
