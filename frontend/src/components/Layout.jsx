@@ -262,7 +262,7 @@ export function Layout({ children }) {
 
             <button
               type="button"
-              onClick={() => router.push("/checkout")}
+              onClick={() => router.push("/checkout#article")}
               // className="w-full mt-5 block items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               className="w-full items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 mt-8"
 

@@ -12,7 +12,7 @@ const success = () => {
     <Head>
       <title>{`Title - Their Side`}</title>
     </Head>
-    <article className="py-16 lg:py-36">
+    <article className="py-16 lg:py-36" id="article">
         <Container>
             <div class="h-screen">
             <div className="p-6 bg-white rounded-lg border border-gray-200 shadow-md">

@@ -12,7 +12,7 @@ const transaction = () => {
     <Head>
       <title>{`Title - Their Side`}</title>
     </Head>
-    <article className="py-16 lg:py-36">
+    <article className="py-16 lg:py-36" id="article">
         <Container>
         <div className="p-6 bg-white rounded-lg border border-gray-200 shadow-md ">
           <div className="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
@@ -30,7 +30,7 @@ const transaction = () => {
               </div>
               <div className="ml-3 inline-flex">
                 <button
-                  onClick={() => router.push("/checkout/success")}
+                  onClick={() => router.push("/checkout/success#article")}
                   className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-100 px-5 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200"
                 >
                     OK
