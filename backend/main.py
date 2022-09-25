@@ -11,8 +11,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-#hello hello
-
 # Association table -> (M-M) Project & Donation
 donation_project = db.Table('donation_project', db.Column('dnId', db.Integer, db.ForeignKey('donation.dnId')), db.Column('prId', db.Integer, db.ForeignKey('project.projectId')))
 
@@ -59,7 +57,6 @@ class Task(db.Model):
     totalPaid = db.Column('paid', db.Integer)
     # Project ID -> foreign key (1-M)
     project_id = db.Column(db.Integer, db.ForeignKey('project.projectId'))
-    # hello
 
 
 dbExample = [
