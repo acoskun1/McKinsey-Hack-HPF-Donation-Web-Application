@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { Container } from '@/components/Container'
 import { useRouter } from 'next/router'
+import axios from 'axios'
 
 const success = () => {
     const router = useRouter()
@@ -24,7 +25,15 @@ const success = () => {
                     <h3 class="md:text-2xl text-base text-gray-900 font-semibold text-center">Payment Done!</h3>
                     <p class="text-gray-600 my-2">Thank you for completing your secure Donation.</p>
                     <p> Have a great day!  </p>
-                    <div class="py-10 text-center">
+                    <button className="mt-4 underline text-blue-600 hover:text-blue-800 visited:text-purple-600" onClick={() => {
+                        const data = localStorage.getItem('invoicePdf')
+                        localStorage.removeItem('invoicePdf')
+                        axios.post('http://127.0.0.1:8000/postData', data)
+                            .then(res => console.log(res))
+                            .catch(err => console.log(err))
+                        
+                    }}>Download Invoice</button>
+                    <div class="py-8 text-center">
                         <button onClick={() => router.push("/")} class="rounded-md border px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3">
                             GO BACK 
                         </button>

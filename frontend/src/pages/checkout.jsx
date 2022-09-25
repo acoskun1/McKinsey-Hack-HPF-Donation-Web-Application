@@ -276,8 +276,9 @@ const Checkout = (props) => {
             currency,
             cart
         }
-        console.log(data)
-        // TODO: Give to API
+        // Temporary fix for invoice pdf
+        localStorage.setItem('invoicePdf', JSON.stringify(data))
+        
         axios.post('http://127.0.0.1:8000/postData', data)
             .then(res => console.log(res))
             .catch(err => console.log(err))
