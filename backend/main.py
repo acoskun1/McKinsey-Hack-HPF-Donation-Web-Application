@@ -1,26 +1,26 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
-
-
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate, migrate
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 # Association table -> (M-M) Project & Donation
-donation_project = db.Table('donation_project', db.Column('dnId', db.Integer, db.ForeignKey('donation.dnId')), db.Column('prId', db.Integer, db.ForeignKey('project.projectId')))
+donation_project = db.Table('donation_project', db.Column('donation_id', db.Integer, db.ForeignKey('donation.donation_id')), db.Column('prId', db.Integer, db.ForeignKey('project.project_id')))
 
 
 class Donor(db.Model):
     __tablename__ = 'donor'
     # Donor ID -> Primary Key
-    donorId = db.Column('donor_id', db.Integer, primary_key=True)
-    fname = db.Column('first_name', db.String(255), nullable=False)
-    lname = db.Column('last_name', db.String(255), nullable=False)
+    donor_id = db.Column('donor_id', db.Integer, primary_key=True)
+    first_name = db.Column('first_name', db.String(255), nullable=False)
+    last_name = db.Column('last_name', db.String(255), nullable=False)
     email = db.Column('email', db.String(255), nullable=False, unique=True)
     # backref relationship -> Donation
     donations = db.relationship('Donor', backref='donor')
@@ -29,9 +29,9 @@ class Donor(db.Model):
 class Donation(db.Model):
     __tablename__ = 'donation'
     # Transaction ID -> primary key
-    dnId = db.Column('donation_id', db.Integer, primary_key=True)
+    donation_id = db.Column('donation_id', db.Integer, primary_key=True)
     # Donor ID -> foreign key (1-M)
-    donor_id = db.Column(db.Integer, db.ForeignKey('donor.donorId'))
+    donor_id = db.Column(db.Integer, db.ForeignKey('donor.donor_id'))
     amount = db.Column('amount', db.Integer, nullable=False)
     currency = db.Column('currency', db.String(3), nullable=False)
     # backref relationship -> Project
@@ -41,9 +41,9 @@ class Donation(db.Model):
 class Project(db.Model):
     __tablename__ = 'project'
     # Project ID -> primary key
-    projectId = db.Column('project_id', db.Integer, primary_key=True)
-    projectName = db.Column('project_name', db.String(255))
-    projectLocation = db.Column('project_location', db.String(255))
+    project_id = db.Column('project_id', db.Integer, primary_key=True)
+    project_name = db.Column('project_name', db.String(255))
+    project_location = db.Column('project_location', db.String(255))
     # backref relationship -> Task
     tasks = db.relationship('Task', backref='task')
 
@@ -51,22 +51,12 @@ class Project(db.Model):
 class Task(db.Model):
     __tablename__ = 'task'
     # Task ID -> primary key
-    taskId = db.Column('task_id', db.Integer, primary_key=True)
-    taskName = db.Column('task_name', db.String(255), nullable=False)
+    task_id = db.Column('task_id', db.Integer, primary_key=True)
+    task_name = db.Column('task_name', db.String(255), nullable=False)
     cost = db.Column('cost', db.Integer, nullable=False)
-    totalPaid = db.Column('paid', db.Integer)
+    total_paid = db.Column('paid', db.Integer)
     # Project ID -> foreign key (1-M)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.projectId'))
-
-
-dbExample = [
-    {
-        'charityId': 1,
-        'firstName': 'Jhon',
-        'lastName': 'Doe'
-    }
-]
-
+    project_id = db.Column(db.Integer, db.ForeignKey('project.project_id'))
 
 @app.route('/')
 def index():
@@ -91,4 +81,5 @@ def logcreate():
     return render_template("logevent.html")
 
 
-app.run(port=8000)
+if __name__ == '__main__':
+    app.run(port=8000)
